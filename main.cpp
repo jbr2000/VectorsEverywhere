@@ -9,13 +9,17 @@ int main()
     srand(time(NULL)); //only do once per program run
     
     int randomNumber;
-    int a;
+    int amount;
+    int search;
+    bool found;
     vector <int> list;
 
-    cout<<"a? ";
-    cin>>a;
+    cout<<"How many numbers should we make? ";
+    cin>>amount;
+    cout<<"What number should we search for? ";
+    cin>>search;
 
-    for(int i=0; i<a; i++)
+    for(int i=0; i<amount; i++)
     {
         randomNumber = rand() % 10;
 
@@ -35,7 +39,49 @@ int main()
         }
     }
 
+    for(int i=0; i<list.size(); i++)
+    {
+        if( search == list.at(i) )
+        {
+            cout<<search<<" is at location "<<i<<endl;
+            found = true;
+        }
+    }
+    if( found == false )
+    {
+        cout<<search<<" is not in the list."<<endl;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return 0;
 }
-    
-
