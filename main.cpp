@@ -4,6 +4,11 @@
 #include <vector>
 using namespace std;
 
+//Prototypes
+vector <int> addRandomNums(int, vector <int>);
+void printVector (vector<int>);
+void searchWithinVector (int, vector<int>);
+
 int main()
 {
     srand(time(NULL)); //only do once per program run
@@ -11,25 +16,38 @@ int main()
     int randomNumber;
     int amount;
     int search;
-    bool found;
     vector <int> list;
+    
 
     cout<<"How many numbers should we make? ";
     cin>>amount;
     cout<<"What number should we search for? ";
     cin>>search;
+    
+    list = addRandomNums(amount, list);
+    printVector(list);
+    searchWithinVector(search, list);
 
-    for(int i=0; i<amount; i++)
+    return 0;
+  }
+  
+  vector <int> addRandomNums(int howMany, vector <int> original)  
+  {
+  for(int i=0; i<howMany; i++)
     {
-        randomNumber = rand() % 10;
+         int num = rand() % 10;
 
-        list.push_back(randomNumber);
+        original.push_back(num);
     }
+  return original;
+  }
 
-    for(int i=0; i<list.size(); i++)
+  void printVector(vector<int> printing)
+  {
+  for(int i=0; i < printing.size(); i++)
     {
-        cout<<list[i];
-        if( i < list.size()-1 )
+        cout<<printing[i];
+        if( i < printing.size()-1 )
         {
             cout<<", ";
         }
@@ -38,19 +56,24 @@ int main()
             cout<<endl;
         }
     }
+  } 
 
-    for(int i=0; i<list.size(); i++)
-    {
-        if( search == list.at(i) )
+void searchWithinVector(int searchFor, vector<int> within)
+{        
+  bool found;      
+  for(int i=0; i<within.size(); i++)
+  {
+        if( searchFor == within.at(i) )
         {
-            cout<<search<<" is at location "<<i<<endl;
-            found = true;
+            cout<<searchFor<<" is at location "<<i<<endl;
+          found = true;
         }
-    }
-    if( found == false )
+  }
+  if( found == false )
     {
-        cout<<search<<" is not in the list."<<endl;
+        cout<<searchFor<<" is not in the list."<<endl;
     }
+} 
 
 
 
@@ -76,12 +99,4 @@ int main()
 
 
 
-
-
-
-
-
-
-
-    return 0;
-}
+ 
